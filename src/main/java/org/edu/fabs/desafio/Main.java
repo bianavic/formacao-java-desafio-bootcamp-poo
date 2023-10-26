@@ -8,6 +8,17 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
 
+        /**
+         * POLIMORFISMO
+         *
+         * Content courseContent1 = new Course();
+         * Content mentorshipContent1 = new Mentorship();
+         *
+         * posso instanciar Mentorship e/ou Course pq elas sao filhas de Content
+         *
+         * ex de uso do polimorfismo: List<String> palavras = new ArrayList<>();
+         */
+
         Course course1 = new Course();
         course1.setTitle("java");
         course1.setDescription("descricao do curso java");
@@ -28,9 +39,8 @@ public class Main {
         mentorship2.setDescription("descricao da mentoria javaScript");
         mentorship2.setMentorshipDate(LocalDate.now());
 
-
-
         System.out.println(mentorship2);
+
     }
 
 }
