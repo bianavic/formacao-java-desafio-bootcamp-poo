@@ -2,29 +2,11 @@ package org.edu.fabs.desafio.domain;
 
 import java.time.LocalDate;
 
-public class Mentorship {
+public class Mentorship extends Content {
 
-    private String title;
-    private String description;
     private LocalDate mentorshipDate;
 
     public Mentorship() {
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public LocalDate getMentorshipDate() {
@@ -38,12 +20,15 @@ public class Mentorship {
     @Override
     public String toString() {
         return "Mentorship{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
+                "title='" + getTitle() + '\'' +
+                ", description='" + getDescription() + '\'' +
                 ", mentorshipDate=" + mentorshipDate +
                 '}';
     }
 
-    //    private void xpCalculator() {};
+    @Override
+    public double xpCalculator() {
+        return XP_DEFAULT + 20;
+    }
 
 }

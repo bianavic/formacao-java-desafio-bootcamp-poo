@@ -1,28 +1,10 @@
 package org.edu.fabs.desafio.domain;
 
-public class Course {
+public class Course extends Content {
 
-    private String title;
-    private String description;
     private int hour;
 
     public Course() {
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getHour() {
@@ -36,13 +18,15 @@ public class Course {
     @Override
     public String toString() {
         return "Course{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
+                "title='" + getTitle() + '\'' +
+                ", description='" + getDescription() + '\'' +
                 ", hour=" + hour +
                 '}';
     }
 
-
-    //    private void xpCaulculatpr() {};
+    @Override
+    public double xpCalculator() {
+        return XP_DEFAULT * hour;
+    }
 
 }
