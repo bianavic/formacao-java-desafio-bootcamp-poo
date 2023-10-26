@@ -2,6 +2,7 @@ package org.edu.fabs.desafio.domain;
 
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Dev {
@@ -20,11 +21,28 @@ public class Dev {
     private Set<Content> contentApplied = new LinkedHashSet<>();
     private Set<Content> contentFinalized = new LinkedHashSet<>();
 
-    public void applyBootcamp(Bootcamp bootcamp) {}
+    public void applyBootcamp(Bootcamp bootcamp) {
+        this.contentApplied.addAll(bootcamp.getContents());
+        bootcamp.getTotalDevsApplications().add(this); // adicionou este dev no grupo geral dos devs inscritos no bootcamp
+    }
 
-    public void progression() {}
+    public void progression() {
+        Optional<Content> content = this.contentApplied.stream()
+                .findFirst();
+        if (content.isPresent()) {
+            this.contentFinalized.add(content.get());
+            // removo dos conteudos incritos
+            this.contentApplied.remove(content.get());
+        } else {
+            System.err.println("You did not applied to any content");
+        }
+    }
 
-    public void totalXPCalculator() {}
+    public double totalXPCalculator() {
+        return this.contentFinalized.stream()
+                .mapToDouble(Content::xpCalculator)
+                .sum();
+    }
 
     public Dev() {
     }
